@@ -117,47 +117,7 @@ db.usuario.insertMany([
     _id: 7,
     nome: "usuario07",
     email: "usuario07@gmail.com",
-  },
-  {
-    _id: 8,
-    nome: "usuario07",
-    email: "usuario07@gmail.com",
-  },
-  {
-    _id: 9,
-    nome: "usuario08",
-    email: "usuario08@gmail.com",
-  },
-  {
-    _id: 10,
-    nome: "usuario10",
-    email: "usuario10@gmail.com",
-  },
-  {
-    _id: 11,
-    nome: "usuario11",
-    email: "usuario11@gmail.com",
-  },
-  {
-    _id: 12,
-    nome: "usuario12",
-    email: "usuario12@gmail.com",
-  },
-  {
-    _id: 13,
-    nome: "usuario13",
-    email: "usuario13@gmail.com",
-  },
-  {
-    _id: 14,
-    nome: "usuario14",
-    email: "usuario14@gmail.com",
-  },
-  {
-    _id: 15,
-    nome: "usuario15",
-    email: "usuario15@gmail.com",
-  },
+  }
 ]);
 
 // Inserção dos dados referentes aos posts dos usuários
@@ -217,7 +177,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 7,
@@ -225,7 +185,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 8,
@@ -233,7 +193,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 9,
@@ -241,7 +201,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 10,
@@ -249,7 +209,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 12,
@@ -257,7 +217,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 13,
@@ -265,7 +225,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 14,
@@ -273,7 +233,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   },
   {
     _id: 15,
@@ -281,7 +241,7 @@ db.post.insertMany([
     titulo: "",
     conteudo: [""],
     tags: ["tag1", "tag2"],
-    liked: [],
+    liked: [0],
   }
 ]);
 
