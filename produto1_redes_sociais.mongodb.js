@@ -34,11 +34,12 @@ print("Resposta: Database criada com sucesso;\n");
 print("------- Exclusão e Visualização de dados ------------");
 // limpeza e verificação de exclusão dos dados/documentos
 print("Iniciando limpeza dos dados:\n");
-print("db.usuario.deleteMany({});");
-let delUser = db.usuario.deleteMany({});
 
-print("db.post.deleteMany({});");
+let delUser = db.usuario.deleteMany({});
+print("db.usuario.deleteMany({});");
+
 let delPost = db.post.deleteMany({});
+print("db.post.deleteMany({});");
 
 if (delUser.deletedCount === 0 && delPost.deletedCount === 0) {
   print("Resposta: 0 dados encontrados, ou collection não criada;\n");
@@ -279,43 +280,43 @@ db.colecao1
   })
   .pretty();
 
-// // 4.2 $and (explícito) - [explicação]
-// db.colecao1
-//   .find({
-//     $and: [{ campo1: valor1 }, { campo2: valor2 }],
-//   })
-//   .pretty();
+// 4.2 $and (explícito) - [explicação]
+db.colecao1
+  .find({
+    $and: [{ campo1: valor1 }, { campo2: valor2 }],
+  })
+  .pretty();
 
-// // 4.3 $or - [explicação]
-// db.colecao1
-//   .find({
-//     $or: [{ campo1: valor1 }, { campo2: valor2 }],
-//   })
-//   .pretty();
+// 4.3 $or - [explicação]
+db.colecao1
+  .find({
+    $or: [{ campo1: valor1 }, { campo2: valor2 }],
+  })
+  .pretty();
 
-// // 4.4 $nor - [explicação]
-// db.colecao1
-//   .find({
-//     $nor: [{ campo1: valor1 }, { campo2: valor2 }],
-//   })
-//   .pretty();
+// 4.4 $nor - [explicação]
+db.colecao1
+  .find({
+    $nor: [{ campo1: valor1 }, { campo2: valor2 }],
+  })
+  .pretty();
 
-// // 4.5 $not - [explicação]
-// db.colecao1
-//   .find({
-//     campo: { $not: { $gt: valor } },
-//   })
-//   .pretty();
+// 4.5 $not - [explicação]
+db.colecao1
+  .find({
+    campo: { $not: { $gt: valor } },
+  })
+  .pretty();
 
-// // 4.6 Combinação ($and + $or) - [explicação]
-// db.colecao1
-//   .find({
-//     $and: [
-//       { campo1: valor1 },
-//       { $or: [{ campo2: valor2 }, { campo3: valor3 }] },
-//     ],
-//   })
-//   .pretty();
+// 4.6 Combinação ($and + $or) - [explicação]
+db.colecao1
+  .find({
+    $and: [
+      { campo1: valor1 },
+      { $or: [{ campo2: valor2 }, { campo3: valor3 }] },
+    ],
+  })
+  .pretty();
 
 // ==================================================
 // FIM DO TRABALHO
