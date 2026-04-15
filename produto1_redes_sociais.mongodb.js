@@ -82,48 +82,9 @@ print("------ ##################################### -------------");
 // --------------------------------------------------
 
 // Inserção dos dados sobre o usuário
-db.usuario.insertMany([
-  // mínimo 15 documentos
-  {
-    _id: 1,
-    nome: "cleber henrique",
-    email: "cleber.henrique@gmail.com",
-  },
-  {
-    _id: 2,
-    nome: "julia silva",
-    email: "julia.silva@gmail.com",
-  },
-  {
-    _id: 3,
-    nome: "jaqueline texeira",
-    email: "jaqueteixeira@gmail.com",
-  },
-  {
-    _id: 4,
-    nome: "gabriel kunimatsu",
-    email: "gabrielkmatsu@gmail.com",
-  },
-  {
-    _id: 5,
-    nome: "matheus cupertino",
-    email: "theucupertino@gmail.com",
-  },
-  {
-    _id: 6,
-    nome: "usuario06",
-    email: "usuario06@gmail.com",
-  },
-  {
-    _id: 7,
-    nome: "usuario07",
-    email: "usuario07@gmail.com",
-  }
-]);
 
-// Inserção dos dados referentes aos posts dos usuários
+// mínimo 15 documentos
 db.post.insertMany([
-  // quantidade adequada
   {
     _id: 1,
     author: 5, //reffering id_usuario
@@ -167,83 +128,144 @@ db.post.insertMany([
     author: 1,
     titulo: "são paulo problemas de aluguel",
     conteudo: [
-      "Espaço a apertado e falta de privacidade a dura realidade das kitnets em são paulo",
+      "Espaço apertado e falta de privacidade a dura realidade das kitnets em são paulo",
     ],
     tags: ["Economia", "Jornal"],
-    liked: [1, 2, 3, 4, 5],
+    liked: [2, 3, 4, 5],
   },
   {
     _id: 6,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 7,
+    titulo: "jogo indie podendo ser ate melhor qeu goth do ano",
+    conteudo: [
+      "este jogo lançado semanas antes do jogo do ano pode ate não ser AAA mas tem mecanicas e historias de cair o queixo",
+    ],
+    tags: ["Review", "Jogos"],
+    liked: [2, 4, 6, 1],
   },
   {
     _id: 7,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 6,
+    titulo: "Dificuldades enfrentadas pelos advogados ",
+    conteudo: [
+      "a realidade e muito dificil se manter e atuar e analise de varias situaçoes",
+    ],
+    tags: ["Jornal", "Economia", "Direito"],
+    liked: [2, 1, 3, 4, 7],
   },
   {
     _id: 8,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 2,
+    titulo: "filme polemico sobre direito",
+    conteudo: [
+      "Forte e violento advogado que age dos dois lados da lei",
+      "a trama se passa em londres na epoca em que o direito era novidade no local e precisava de varias reformas",
+    ],
+    tags: ["Jornal", "Filme", "Direito"],
+    liked: [7, 6, 2, 3],
   },
   {
     _id: 9,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 1,
+    titulo: "Novas tecnologias na agricultura",
+    conteudo: [
+      "nova tecnologia pode ajudar a manter as plantações por mais tempo",
+    ],
+    tags: ["Agro", "Jornal"],
+    liked: [7, 6, 3],
   },
   {
     _id: 10,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 5,
+    titulo: "Grafeno entra no ramo do agro",
+    conteudo: [
+      "nova linha de ferramentas feitas com grafeno",
+      "nova tendencia pode incentivar mais o uso do grafeno",
+    ],
+    tags: ["Agro", "Jornal"],
+    liked: [1, 2, 3, 4],
   },
   {
     _id: 12,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 7,
+    titulo: "Preços altos seria abuso",
+    conteudo: [
+      "considerando que jogos AAA são muitos caros para serem produzidos as empresas consideram justo cobrar preços altos em alguns titulos",
+      "sendo um dos ramos de maior area de entreterimento e necessario a acessibilidade por um preço acessivel",
+    ],
+    tags: ["Economia", "Jogos"],
+    liked: [1, 2, 3, 4, 5, 6],
   },
   {
     _id: 13,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 5,
+    titulo: "Filme se destaca por ter envelhecido bem",
+    conteudo: [
+      "Mesmo depois de anos continua sendo um otimo filme aboradando temas atuais e criticas sobre questão de politica e tecnologia",
+      "um futuro que esta se tornando realidade",
+    ],
+    tags: ["Filme", "Review"],
+    liked: [3,4,1],
   },
   {
     _id: 14,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
+    author: 2,
+    titulo: "Filme sobre empreendedorismo",
+    conteudo: [
+      "Filme inspira a empreender mostrando protagonista dialogar e raciocinio logico em varias areas",
+    ],
+    tags: ["Economia", "Filme"],
+    liked: [6, 3],
   },
   {
     _id: 15,
-    author: 0,
-    titulo: "",
-    conteudo: [""],
-    tags: ["tag1", "tag2"],
-    liked: [0],
-  }
+    author: 7,
+    titulo: "Faculdade faz melhor festa de inauguração",
+    conteudo: ["Festa incrivel teve varias atraçoes, barracas,"],
+    tags: ["Jornal", "Academico"],
+    liked: [1,2,3,4,5,6],
+  },
+]);
+
+// Inserção dos dados referentes aos posts dos usuários
+
+// quantidade adequada
+db.usuario.insertMany([
+  {
+    _id: 1,
+    nome: "cleber henrique",
+    email: "cleber.henrique@gmail.com",
+  },
+  {
+    _id: 2,
+    nome: "julia silva",
+    email: "julia.silva@gmail.com",
+  },
+  {
+    _id: 3,
+    nome: "jaqueline texeira",
+    email: "jaqueteixeira@gmail.com",
+  },
+  {
+    _id: 4,
+    nome: "gabriel kunimatsu",
+    email: "gabrielkmatsu@gmail.com",
+  },
+  {
+    _id: 5,
+    nome: "matheus cupertino",
+    email: "theucupertino@gmail.com",
+  },
+  {
+    _id: 6,
+    nome: "Leonardo aparecido",
+    email: "Leoaparrel@gmail.com",
+  },
+  {
+    _id: 7,
+    nome: "beatrice vitoria",
+    email: "usuario07@gmail.com",
+  },
 ]);
 
 // --------------------------------------------------
@@ -273,10 +295,10 @@ db.colecao1.find({ campo: { $ne: valor } }).pretty();
 // --------------------------------------------------
 
 // 4.1 $and (implícito) - [explicação]
-db.colecao1
+db.post
   .find({
-    campo1: valor1,
-    campo2: valor2,
+    tags: 'Direito',
+    tags: 'Review',
   })
   .pretty();
 
@@ -288,9 +310,9 @@ db.colecao1
   .pretty();
 
 // 4.3 $or - [explicação]
-db.colecao1
+db.post
   .find({
-    $or: [{ campo1: valor1 }, { campo2: valor2 }],
+    $or: [{ author: 5 }, { author: 7 }],
   })
   .pretty();
 
