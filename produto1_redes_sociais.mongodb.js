@@ -294,8 +294,7 @@ db.colecao1.find({ campo: { $ne: valor } }).pretty();
 // 4. CONSULTAS COM OPERADORES LÓGICOS
 // --------------------------------------------------
 
-print("--- 4.1 $and (implícito) - [explicação] ---")
-use('redesSociais')
+
 db.post
   .find({
     tags: 'Direito',
@@ -303,15 +302,14 @@ db.post
   })
   .pretty();
 
-print("--- 4.2 $and (explícito) - [explicação] ---")
-use('redesSociais')
+
 db.post
   .find({
     $and: [{ _id: 6 }, { author: 7 }],
   })
   .pretty();
 
-print("--- 4.3 $or - [explicação] ---")
+
 db.post
   .find({
     $or: [{ author: 5 }, { author: 7 }],
@@ -319,7 +317,6 @@ db.post
   .pretty();
 
 // print("--- 4.4 $nor - [explicação] ---")
-use('redesSociais')
 db.post
   .find({
     $nor: [{ author: 5 }, { _id: 7 }],
