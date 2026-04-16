@@ -10,7 +10,7 @@ print(
 print("----------------------------------------------------");
 print("TEMA: Redes Sociais");
 print(
-  "GRUPO:\n - Pedro Henrique Alvarenga Herzog;\n - Victor Caetano Da Conceição;\n - Débora Cupertino de Araújo Lacerda;",
+  "GRUPO:\n - Pedro Henrique Alvarenga Herzog;\n - Victor Caetano Da Conceição;\n - Debora Cupertino de Araújo Lacerda;",
 );
 print("----------------------------------------------------\n");
 
@@ -294,7 +294,8 @@ db.colecao1.find({ campo: { $ne: valor } }).pretty();
 // 4. CONSULTAS COM OPERADORES LÓGICOS
 // --------------------------------------------------
 
-// 4.1 $and (implícito) - [explicação]
+print("--- 4.1 $and (implícito) - [explicação] ---")
+use('redesSociais')
 db.post
   .find({
     tags: 'Direito',
@@ -302,35 +303,37 @@ db.post
   })
   .pretty();
 
-// 4.2 $and (explícito) - [explicação]
-db.colecao1
+print("--- 4.2 $and (explícito) - [explicação] ---")
+use('redesSociais')
+db.post
   .find({
-    $and: [{ campo1: valor1 }, { campo2: valor2 }],
+    $and: [{ _id: 6 }, { author: 7 }],
   })
   .pretty();
 
-// 4.3 $or - [explicação]
+print("--- 4.3 $or - [explicação] ---")
 db.post
   .find({
     $or: [{ author: 5 }, { author: 7 }],
   })
   .pretty();
 
-// 4.4 $nor - [explicação]
-db.colecao1
+// print("--- 4.4 $nor - [explicação] ---")
+use('redesSociais')
+db.post
   .find({
-    $nor: [{ campo1: valor1 }, { campo2: valor2 }],
+    $nor: [{ author: 5 }, { _id: 7 }],
   })
   .pretty();
 
-// 4.5 $not - [explicação]
+// print("--- 4.5 $not - [explicação] ---")
 db.colecao1
   .find({
     campo: { $not: { $gt: valor } },
   })
   .pretty();
 
-// 4.6 Combinação ($and + $or) - [explicação]
+// print("--- 4.6 Combinação ($and + $or) - [explicação] ---")
 db.colecao1
   .find({
     $and: [
