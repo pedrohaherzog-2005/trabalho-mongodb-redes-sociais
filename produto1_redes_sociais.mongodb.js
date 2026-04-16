@@ -10,7 +10,7 @@ print(
 print("----------------------------------------------------");
 print("TEMA: Redes Sociais");
 print(
-  "GRUPO:\n - Pedro Henrique Alvarenga Herzog;\n - Victor Caetano Da Conceição;\n - Débora Cupertino de Araújo Lacerda;",
+  "GRUPO:\n - Pedro Henrique Alvarenga Herzog;\n - Victor Caetano Da Conceição;\n - Debora Cupertino de Araújo Lacerda;",
 );
 print("----------------------------------------------------\n");
 
