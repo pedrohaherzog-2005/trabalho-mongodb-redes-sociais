@@ -185,6 +185,17 @@ db.post.insertMany([
     tags: ["Agro", "Jornal"],
     liked: [1, 2, 3, 4],
   },
+
+{
+    _id: 11,
+    author: 7,
+    titulo: "jogo de simulação surpreende",
+    conteudo: [
+      "jogo de simulação que se passa em um hospital geral surpreende por ter uma historia envolvente e mecanicas inovadoras",
+      ],
+    tags: ["Jogos", "Review"],
+    liked: [2, 4, 7],
+  },
   {
     _id: 12,
     author: 7,
@@ -272,29 +283,29 @@ db.usuario.insertMany([
 // 3. CONSULTAS COM OPERADORES DE COMPARAÇÃO
 // ==================================================
 
-// 3.1 $gt - [explicação]
-db.colecao1.find({ campo: { $gt: valor } }).pretty();
+// 3.1 $gt - Busca posts que possuem um ID maior que 10
+db.post.find({_id: { $gt: 10 } }).pretty();
 
-// 3.2 $lt - [explicação]
-db.colecao1.find({ campo: { $lt: valor } }).pretty();
+// 3.2 $lt - Busca posts de autores com ID menor que 3 
+db.post.find({ author: { $lt: 3} }).pretty();
 
-// 3.3 $gte - [explicação]
-db.colecao1.find({ campo: { $gte: valor } }).pretty();
+// 3.3 $gte - Busca usuários com ID maior ou igual a 6
+db.usuario.find({ _id: { $gte: 6 } }).pretty();
 
-// 3.4 $lte - [explicação]
-db.colecao1.find({ campo: { $lte: valor } }).pretty();
+// 3.4 $lte - Busca posts com ID menor ou igual a 5
+db.post.find({ _id: { $lte: 5 } }).pretty();
 
-// 3.5 $in - [explicação]
-db.colecao1.find({ campo: { $in: [valor1, valor2] } }).pretty();
+// 3.5 $in - Busca posts que tenham as tags "Jogos" ou "Filme
+db.post.find({ tags: { $in: ["Jogos", "Filme"] } }).pretty();
 
-// 3.6 $ne - [explicação]
-db.colecao1.find({ campo: { $ne: valor } }).pretty();
+// 3.6 $ne - Busca todos os usuários, exceto o autor de ID 5
+db.usuario.find({ _id: { $ne: 5 } }).pretty();
 
 // --------------------------------------------------
 // 4. CONSULTAS COM OPERADORES LÓGICOS
 // --------------------------------------------------
 
-
+// 4.1 $and (implícito) - Busca posts que tenham a tag "Direito" E a tag "Review" ao mesmo tempo
 db.post
   .find({
     tags: 'Direito',
@@ -302,40 +313,40 @@ db.post
   })
   .pretty();
 
-
+// 4.2 $and (explícito) - Busca posts do autor 2 que também falem de "Economia"
 db.post
   .find({
-    $and: [{ _id: 6 }, { author: 7 }],
+    $and: [{ author: 2 }, { tags: "Economia" }],
   })
   .pretty();
 
-
+// 4.3 $or - Busca posts que sejam escritos pelo autor 5 ou pelo autor 7
 db.post
   .find({
     $or: [{ author: 5 }, { author: 7 }],
   })
   .pretty();
 
-// print("--- 4.4 $nor - [explicação] ---")
+// 4.4 $nor - Busca posts que NÃO sejam do autor 1 e NÃO tenham a tag "Jornal"
 db.post
   .find({
-    $nor: [{ author: 5 }, { _id: 7 }],
+    $nor: [{ author: 1 }, { tags: "Jornal" }],
   })
   .pretty();
 
-// print("--- 4.5 $not - [explicação] ---")
-db.colecao1
+// 4.5 $not - Busca posts cujo ID NÃO seja maior que 10 (ou seja, IDs de 1 a 10)
+db.post
   .find({
-    campo: { $not: { $gt: valor } },
+    _id: { $not: { $gt: 10 } },
   })
   .pretty();
 
-// print("--- 4.6 Combinação ($and + $or) - [explicação] ---")
-db.colecao1
+// 4.6 Combinação ($and + $or) - Busca posts de "Jogos" que pertençam ao autor 5 OU ao autor 7
+db.post
   .find({
     $and: [
-      { campo1: valor1 },
-      { $or: [{ campo2: valor2 }, { campo3: valor3 }] },
+      { tags: "Jogos" },
+      { $or: [{ author: 5 }, { author: 7 }] },
     ],
   })
   .pretty();
