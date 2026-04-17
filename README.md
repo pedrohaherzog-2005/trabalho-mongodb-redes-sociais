@@ -8,6 +8,6 @@ Os dados utilizados no trabalho foram organizados em collections como `posts` e 
 
 ## Membros
 
-- Pedro Henrique Alvarenga Herzog
 - Victor Caetano Da Conceição
+- Pedro Henrique Alvarenga Herzog
 - Debora Cupertino de Araújo Lacerda
