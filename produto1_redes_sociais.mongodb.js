@@ -1,25 +1,21 @@
 print(
-  "=================================================================================================================================================",
+  "===========================================================================",
 );
 print(
   "TRABALHO MONGODB - CONSULTAS AVANÇADAS COM OPERADORES COMPARATIVOS/LÓGICOS",
 );
 print(
-  "=================================================================================================================================================",
+  "===========================================================================",
 );
-print(
-  "-------------------------------------------------------------------------------------------------------------------------------------------------",
-);
+print("----------------------------------------------------");
 print("TEMA: Redes Sociais");
 print(
-  "GRUPO:\n - Victor Caetano Da Conceição;\n - Pedro Henrique Alvarenga Herzog;\n - Debora Cupertino de Araújo Lacerda;",
+  "GRUPO:\n - Pedro Henrique Alvarenga Herzog;\n - Victor Caetano Da Conceição;\n - Debora Cupertino de Araújo Lacerda;",
 );
-print(
-  "-------------------------------------------------------------------------------------------------------------------------------------------------\n",
-);
+print("----------------------------------------------------\n");
 
 // ==================================================
-// DATA DE ENTREGA: 17/04/2026
+// DATA DE ENTREGA: 28/04/2026
 // ==================================================
 
 // ==================================================
@@ -35,9 +31,7 @@ print("Resposta: Database criada com sucesso;\n");
 // 1.1 - EXCLUSÃO DOS DADOS E DAS COLEÇÕES
 // ==================================================
 
-print(
-  "------------------------------------------------- Exclusão e Visualização de dados --------------------------------------------------------------",
-);
+print("------- Exclusão e Visualização de dados ------------");
 // limpeza e verificação de exclusão dos dados/documentos
 print("Iniciando limpeza dos dados:\n");
 
@@ -55,20 +49,16 @@ if (delUser.deletedCount === 0 && delPost.deletedCount === 0) {
 print("db.usuario.find().pretty();" + "\n" + "db.post.find().pretty();");
 if (db.usuario.countDocuments({}) === 0 && db.post.countDocuments({}) === 0) {
   print(
-    "Resposta: Nenhuma informação encontrada para visualizar os dados pós-exclusão;\n",
+    "Resposta: Nenhuma informação encontrada para visualizar os dados pós-exclusão;",
   );
 } else {
   // Caso houvesse dados, isso imprimiria os resultados no terminal
   printjson(db.usuario.find().toArray());
   printjson(db.post.find().toArray());
 }
-print(
-  "------------------------------------------------- ################################## ------------------------------------------------------------",
-);
+print("------ ################################## --------------\n");
 
-print(
-  "------- Exclusão e Criação das Collections ------------------------------------------------------------------------------------------------------",
-);
+print("------- Exclusão e Criação das Collections -------------");
 db.usuario.drop();
 print("db.usuario.drop();");
 
@@ -85,9 +75,7 @@ print(
 );
 print("Resposta: Collections criadas com sucesso;");
 
-print(
-  "------------------------------------------------- ################################## ------------------------------------------------------------",
-);
+print("------ ##################################### -------------");
 
 // --------------------------------------------------
 // 2. INSERÇÃO DE DADOS
@@ -198,13 +186,13 @@ db.post.insertMany([
     liked: [1, 2, 3, 4],
   },
 
-  {
+{
     _id: 11,
     author: 7,
     titulo: "jogo de simulação surpreende",
     conteudo: [
       "jogo de simulação que se passa em um hospital geral surpreende por ter uma historia envolvente e mecanicas inovadoras",
-    ],
+      ],
     tags: ["Jogos", "Review"],
     liked: [2, 4, 7],
   },
@@ -228,7 +216,7 @@ db.post.insertMany([
       "um futuro que esta se tornando realidade",
     ],
     tags: ["Filme", "Review"],
-    liked: [3, 4, 1],
+    liked: [3,4,1],
   },
   {
     _id: 14,
@@ -246,7 +234,7 @@ db.post.insertMany([
     titulo: "Faculdade faz melhor festa de inauguração",
     conteudo: ["Festa incrivel teve varias atraçoes, barracas,"],
     tags: ["Jornal", "Academico"],
-    liked: [1, 2, 3, 4, 5, 6],
+    liked: [1,2,3,4,5,6],
   },
 ]);
 
@@ -287,228 +275,81 @@ db.usuario.insertMany([
   {
     _id: 7,
     nome: "beatrice vitoria",
-    email: "beatvit@gmail.com",
+    email: "usuario07@gmail.com",
   },
 ]);
 
 // --------------------------------------------------
 // 3. CONSULTAS COM OPERADORES DE COMPARAÇÃO
-// --------------------------------------------------
+// ==================================================
 
-print(
-  "=================================================================================================================================================",
-);
-print(
-  "DATABASE: redesSociais;" +
-    "\n" +
-    "COLLECTIONS: { post, usuario };" +
-    "\n" +
-    "TITLE: Consultas com operadores de comparação",
-);
-print(
-  "=================================================================================================================================================",
-);
+// 3.1 $gt - Busca posts que possuem um ID maior que 10
+db.post.find({_id: { $gt: 10 } }).pretty();
 
-print(
-  "\n========================================= 3.1 $gt - Busca posts que possuem um ID maior que 10 ==================================================\n",
-);
-print("db.post.find({_id: { $gt: 10 } }).pretty();");
-printjson(
-  db.post
-    .find({
-      _id: { $gt: 10 },
-    })
-    .toArray(),
-);
-print("\n");
+// 3.2 $lt - Busca posts de autores com ID menor que 3 
+db.post.find({ author: { $lt: 3} }).pretty();
 
-print(
-  "=========================================== 3.2 $lt - Busca posts de autores com ID menor que 3 =================================================\n",
-);
-print("db.post.find({ author: { $lt: 3} }).pretty();");
-printjson(
-  db.post
-    .find({
-      author: { $lt: 3 },
-    })
-    .toArray(),
-);
-print("\n");
+// 3.3 $gte - Busca usuários com ID maior ou igual a 6
+db.usuario.find({ _id: { $gte: 6 } }).pretty();
 
-print(
-  "============================================ 3.3 $gte - Busca usuários com ID maior ou igual a 6 ================================================\n",
-);
-print("db.usuario.find({ _id: { $gte: 6 } }).pretty();");
-printjson(
-  db.usuario
-    .find({
-      _id: { $gte: 6 },
-    })
-    .toArray(),
-);
-print("\n");
+// 3.4 $lte - Busca posts com ID menor ou igual a 5
+db.post.find({ _id: { $lte: 5 } }).pretty();
 
-print(
-  "============================================== 3.4 $lte - Busca posts com ID menor ou igual a 5 =================================================\n",
-);
-print("db.post.find({ _id: { $lte: 5 } }).pretty();");
-printjson(
-  db.post
-    .find({
-      _id: { $lte: 5 },
-    })
-    .toArray(),
-);
-print("\n");
+// 3.5 $in - Busca posts que tenham as tags "Jogos" ou "Filme
+db.post.find({ tags: { $in: ["Jogos", "Filme"] } }).pretty();
 
-print(
-  "======================================== 3.5 $in - Busca posts que tenham as tags 'Jogos' ou 'Filme' ==============================================\n",
-);
-print("db.post.find({ tags: { $in: ['Jogos', 'Filme'] } }).pretty();");
-printjson(
-  db.post
-    .find({
-      tags: {
-        $in: ["Jogos", "Filme"],
-      },
-    })
-    .toArray(),
-);
-print("\n");
-
-print(
-  "========================================= 3.6 $ne - Busca todos os usuários, exceto o autor de ID 5 =============================================\n",
-);
-print("db.usuario.find({ _id: { $ne: 5 } }).pretty();");
-printjson(db.usuario.find({ _id: { $ne: 5 } }).toArray());
-print("\n");
+// 3.6 $ne - Busca todos os usuários, exceto o autor de ID 5
+db.usuario.find({ _id: { $ne: 5 } }).pretty();
 
 // --------------------------------------------------
 // 4. CONSULTAS COM OPERADORES LÓGICOS
 // --------------------------------------------------
 
-print(
-  "=================================================================================================================================================",
-);
-print(
-  "DATABASE: redesSociais;" +
-    "\n" +
-    "COLLECTIONS: { post, usuario };" +
-    "\n" +
-    "TITLE: Consultas com operadores lógicos",
-);
-print(
-  "=================================================================================================================================================",
-);
+// 4.1 $and (implícito) - Busca posts que tenham a tag "Direito" E a tag "Review" ao mesmo tempo
+db.post
+  .find({
+    tags: 'Direito',
+    tags: 'Review',
+  })
+  .pretty();
 
-print(
-  "\n===================== 4.1 $and (implícito) - Busca posts que tenham a tag 'Direito' E a tag 'Review' ao mesmo tempo =============================\n",
-);
-print("db.post.find({ tags: 'Direito', tags: 'Review', }).pretty();");
-printjson(db.post.find({ tags: "Direito", tags: "Review" }).toArray());
-print("\n");
+// 4.2 $and (explícito) - Busca posts do autor 2 que também falem de "Economia"
+db.post
+  .find({
+    $and: [{ author: 2 }, { tags: "Economia" }],
+  })
+  .pretty();
 
-print(
-  "=============================== 4.2 $and (explícito) - Busca posts do autor 2 que também falem de 'Economia' =====================================\n",
-);
-print(
-  "db.post.find({ $and: [{ author: 2 }, { tags: 'Economia' }] }).pretty();",
-);
-printjson(
-  db.post
-    .find({
-      $and: [{ author: 2 }, { tags: "Economia" }],
-    })
-    .toArray(),
-);
-print("\n");
+// 4.3 $or - Busca posts que sejam escritos pelo autor 5 ou pelo autor 7
+db.post
+  .find({
+    $or: [{ author: 5 }, { author: 7 }],
+  })
+  .pretty();
 
-print(
-  "=================================== 4.3 $or - Busca posts que sejam escritos pelo autor 5 ou pelo autor 7 ========================================\n",
-);
-print("db.post.find({ $or: [{ author: 5 }, { author: 7 }] }).pretty();");
-printjson(
-  db.post
-    .find({
-      $or: [{ author: 5 }, { author: 7 }],
-    })
-    .toArray(),
-);
-print("\n");
+// 4.4 $nor - Busca posts que NÃO sejam do autor 1 e NÃO tenham a tag "Jornal"
+db.post
+  .find({
+    $nor: [{ author: 1 }, { tags: "Jornal" }],
+  })
+  .pretty();
 
-print(
-  "================================ 4.4 $nor - Busca posts que NÃO sejam do autor 1 e NÃO tenham a tag 'Jornal' ====================================\n",
-);
-print("db.post({ $nor: [{ author: 1 }, { tags: 'Jornal' }] }).pretty();");
-printjson(
-  db.post
-    .find({
-      $nor: [{ author: 1 }, { tags: "Jornal" }],
-    })
-    .toArray(),
-);
-print("\n");
+// 4.5 $not - Busca posts cujo ID NÃO seja maior que 10 (ou seja, IDs de 1 a 10)
+db.post
+  .find({
+    _id: { $not: { $gt: 10 } },
+  })
+  .pretty();
 
-print(
-  "====================== 4.5 Combinação ($not + $gt) - Busca posts cujo ID NÃO seja maior que 10 (ou seja, IDs de 1 a 10) ======================\n",
-);
-print("db.post.find({ _id: { $not: { $gt: 10 } } }).pretty();");
-printjson(
-  db.post
-    .find({
-      _id: {
-        $not: { $gt: 10 },
-      },
-    })
-    .toArray(),
-);
-print("\n");
-
-print(
-  "========================= 4.6 Combinação ($and + $or) - Busca posts de 'Jogos' que pertençam ao autor 5 OU ao autor 7 =========================\n",
-);
-print(
-  "db.post.find({ [{ tags: 'Jogos' }, { $or [{ author: 5 }, { author: 7 }] }] }).pretty();",
-);
-printjson(
-  db.post
-    .find({
-      $and: [{ tags: "Jogos" }, { $or: [{ author: 5 }, { author: 7 }] }],
-    })
-    .toArray(),
-);
-print("\n");
-
-print(
-  "============================= 4.7 Combinação (updateOne + $addToSet) - Atualiza a quantidade dos likes de um post =============================\n",
-);
-print("db.post.updateOne({ _id: 14 }, { $addToSet: { liked: 7 } });");
-printjson(
-  db.post.updateOne(
-    { _id: 14 },
-    {
-      $addToSet: {
-        liked: 7,
-      },
-    },
-  ),
-);
-print("\n");
-
-print(
-  "======================================= 4.8 Combinação (updateOne + $pull) - Exclui um like de um post =======================================\n",
-);
-print("db.post.updateOne({ _id: 12 }, { $pull: { liked: 6 } });");
-printjson(
-  db.post.updateOne(
-    { _id: 12 },
-    {
-      $pull: {
-        liked: 6,
-      },
-    },
-  ),
-);
+// 4.6 Combinação ($and + $or) - Busca posts de "Jogos" que pertençam ao autor 5 OU ao autor 7
+db.post
+  .find({
+    $and: [
+      { tags: "Jogos" },
+      { $or: [{ author: 5 }, { author: 7 }] },
+    ],
+  })
+  .pretty();
 
 // ==================================================
 // FIM DO TRABALHO
