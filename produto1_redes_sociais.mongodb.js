@@ -19,7 +19,7 @@ print(
 );
 
 // ==================================================
-// DATA DE ENTREGA: 17/04/2026
+// DATA DE ENTREGA: 18/04/2026
 // ==================================================
 
 // ==================================================
@@ -47,7 +47,9 @@ print("db.usuario.deleteMany({});");
 let delPost = db.post.deleteMany({});
 print("db.post.deleteMany({});");
 
-if (delUser.deletedCount === 0 && delPost.deletedCount === 0) {
+if (delUser.deletedCount > 0 || delPost.deletedCount > 0) {
+  print("Resposta: Dados deletados com sucesso;\n");
+} else {
   print("Resposta: 0 dados encontrados, ou collection não criada;\n");
 }
 
@@ -63,19 +65,23 @@ if (db.usuario.countDocuments({}) === 0 && db.post.countDocuments({}) === 0) {
   printjson(db.post.find().toArray());
 }
 print(
-  "------------------------------------------------- ################################## ------------------------------------------------------------",
+  "------------------------------------------------- ################################## ------------------------------------------------------------\n",
 );
 
 print(
-  "------- Exclusão e Criação das Collections ------------------------------------------------------------------------------------------------------",
+  "------------------------------------------------- Exclusão e Criação das Collections ------------------------------------------------------------",
 );
-db.usuario.drop();
+let dropUser = db.usuario.drop();
 print("db.usuario.drop();");
 
-db.post.drop();
+let dropPost = db.post.drop();
 print("db.post.drop();");
 
-print("Resposta: Nenhuma collection encontrada para exclusão;\n");
+if (dropUser || dropPost) {
+  print("Resposta: Collections dropadas com sucesso;\n");
+} else {
+  print("Resposta: Nenhuma collection encontrada para exclusão;\n");
+}
 
 // Após, cria-se as coleções
 db.createCollection("usuario");
@@ -86,7 +92,7 @@ print(
 print("Resposta: Collections criadas com sucesso;");
 
 print(
-  "------------------------------------------------- ################################## ------------------------------------------------------------",
+  "------------------------------------------------- ################################## ------------------------------------------------------------\n",
 );
 
 // --------------------------------------------------
@@ -94,7 +100,6 @@ print(
 // --------------------------------------------------
 
 // Inserção dos dados sobre o usuário
-
 // mínimo 15 documentos
 db.post.insertMany([
   {
@@ -300,10 +305,8 @@ print(
 );
 print(
   "DATABASE: redesSociais;" +
-    "\n" +
-    "COLLECTIONS: { post, usuario };" +
-    "\n" +
-    "TITLE: Consultas com operadores de comparação",
+  "\n" + "COLLECTIONS: { post, usuario };" +
+  "\n" + "TITLE: Consultas com operadores de comparação",
 );
 print(
   "=================================================================================================================================================",
@@ -380,7 +383,13 @@ print(
   "========================================= 3.6 $ne - Busca todos os usuários, exceto o autor de ID 5 =============================================\n",
 );
 print("db.usuario.find({ _id: { $ne: 5 } }).pretty();");
-printjson(db.usuario.find({ _id: { $ne: 5 } }).toArray());
+printjson(
+  db.usuario.find(
+    { 
+      _id: { $ne: 5 },
+    },
+  ).toArray(),
+);
 print("\n");
 
 // --------------------------------------------------
@@ -392,10 +401,8 @@ print(
 );
 print(
   "DATABASE: redesSociais;" +
-    "\n" +
-    "COLLECTIONS: { post, usuario };" +
-    "\n" +
-    "TITLE: Consultas com operadores lógicos",
+  "\n" + "COLLECTIONS: { post, usuario };" +
+  "\n" + "TITLE: Consultas com operadores lógicos",
 );
 print(
   "=================================================================================================================================================",
@@ -405,7 +412,14 @@ print(
   "\n===================== 4.1 $and (implícito) - Busca posts que tenham a tag 'Direito' E a tag 'Review' ao mesmo tempo =============================\n",
 );
 print("db.post.find({ tags: 'Direito', tags: 'Review', }).pretty();");
-printjson(db.post.find({ tags: "Direito", tags: "Review" }).toArray());
+printjson(
+  db.post.find(
+    { 
+      tags: "Direito",
+      tags: "Review",
+    },
+  ).toArray()
+);
 print("\n");
 
 print(
@@ -479,8 +493,24 @@ printjson(
 );
 print("\n");
 
+// --------------------------------------------------
+// 5. ATUALIZAÇÃO E EXCLUSÃO DOS DOCUMENTOS
+// --------------------------------------------------
+
 print(
-  "============================= 4.7 Combinação (updateOne + $addToSet) - Atualiza a quantidade dos likes de um post =============================\n",
+  "=================================================================================================================================================",
+);
+print(
+  "DATABASE: redesSociais;" +
+  "\n" + "COLLECTION: POST;" +
+  "\n" + "TITLE: Atualização e exclusão de dados usando UpdateOne();",
+);
+print(
+  "=================================================================================================================================================\n",
+);
+
+print(
+  "============================= 5.1 Combinação (updateOne + $addToSet) - Atualiza a quantidade de likes do post =============================\n",
 );
 print("db.post.updateOne({ _id: 14 }, { $addToSet: { liked: 7 } });");
 printjson(
@@ -496,7 +526,7 @@ printjson(
 print("\n");
 
 print(
-  "======================================= 4.8 Combinação (updateOne + $pull) - Exclui um like de um post =======================================\n",
+  "======================================= 5.2 Combinação (updateOne + $pull) - Exclui um like de um post =======================================\n",
 );
 print("db.post.updateOne({ _id: 12 }, { $pull: { liked: 6 } });");
 printjson(
